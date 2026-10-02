@@ -43,6 +43,7 @@ result = app.invoke({"input": "I was billed twice for last month's subscription.
 print(result["response"])  # -> "Handling billing..."
 
 route_decision = router.last_decision["answers"]["route"]
+print("Answers are:", router.last_decision["answers"])
 print("Predicted route:", route_decision["choice"])
 print(
     "Route confidence:",
