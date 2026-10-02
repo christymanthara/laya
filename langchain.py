@@ -42,5 +42,13 @@ app = workflow.compile()
 result = app.invoke({"input": "I was billed twice for last month's subscription."})
 print(result["response"])  # -> "Handling billing..."
 
+route_decision = router.last_decision["answers"]["route"]
+print("Predicted route:", route_decision["choice"])
+print(
+    "Route confidence:",
+    route_decision.get("answer_confidence", route_decision.get("confidence")),
+)
+print("Route probabilities:", route_decision.get("probabilities"))
 
-#the 
+
+#the probabilities of each route choice is checked against the confidence threshold to determine if the fallback should be used
